@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "output_dir": "../outputs/new_project",
+  "claim_scope": "exploratory_subset",
+  "input": {
+    "format": "h5ad",
+    "path": "../local/processed_subset.h5ad",
+    "counts_layer": "counts",
+    "columns": {
+      "cell_id": "cell_id",
+      "sample_id": "sample_id",
+      "donor_id": "donor_id",
+      "state": "cell_state"
+    },
+    "species": "REPLACE_WITH_SPECIES",
+    "accession": "REPLACE_WITH_DATA_SOURCE",
+    "counts_origin": "REPLACE_WITH_EXPLICIT_RAW_COUNTS_SOURCE",
+    "qc_status": "NOT_YET_AUDITED",
+    "qc_completed": false,
+    "annotation": {
+      "kind": "operational",
+      "label": "REPLACE_WITH_ORIGINAL_STATE_LABEL",
+      "source": "REPLACE_WITH_ORIGINAL_STATE_DEFINITION"
+    },
+    "max_counts_bytes": 268435456
+  },
+  "features": {
+    "mode": "variance",
+    "n_genes": 450,
+    "maximum_genes": 500,
+    "maximum_cells": 5000
+  },
+  "targets": [
+    "YOUR_GENE_SYMBOL"
+  ],
+  "perturbation": {
+    "type": "KD",
+    "alpha": 0.5,
+    "interpretation": "50% network-row scaling, NOT calibrated 50% biological RNA/protein KD"
+  },
+  "engine": {
+    "id": "dosedirko",
+    "source_dir": "../local/external/scgpa/backend/virtualcell_service/app",
+    "source_sha256": {
+      "__init__.py": "665988cba253fe19936832826ccdf795a59603e1a999090d0f4268c87414141b",
+      "api.py": "a65be492219742afe1450ab2c9f80ecaaa64d7a8c59a065353c70601e90ed6c3",
+      "direction.py": "c3e7b7c312c0e735b97f753a60d82d81b405a000dbcf8f1dd82b6c384dac9ecf",
+      "embed_align.py": "87872ad0a3c1187773baa5275be382e7b6f3e73ff3a367fd3f14e03e4d2496c3",
+      "grn_pcr.py": "d53b27daec632f0293e51d9e8a160aae3422ae6455d2446ea252a120bddab525",
+      "io.py": "5b22831528f91a4e04db4376dc5bfda7bbf429b96041e085ce95d04441bb3e21",
+      "ko.py": "693464401015634283922898724fd9ffb7cf659c0ec63a6ec510efbdb665d1f3",
+      "preprocess.py": "bf6385bccc6227b3cee9f133466a0f105a2f3b91ea3a1cd2c0460fa538fdf4f9",
+      "stability.py": "fc40cca1d7193453bf59974756141dd9360011c5640e319253039a5b143d37df",
+      "tensor_denoise.py": "fcbbf092aa17a0354dd8873e7727005ce6ebbbdcb54cc1545a6f1986a54a50b3"
+    },
+    "dependency_paths": [],
+    "params": {
+      "n_subsample": 4,
+      "subsample_frac": 0.8,
+      "pca_k": 10,
+      "ridge_alpha": 1.0,
+      "cp_rank": 3,
+      "embed_dim": 10,
+      "beta": 0.2,
+      "n_hops": 3,
+      "n_runs": 3,
+      "min_cells_frac": 0.02,
+      "random_state": 271828,
+      "n_top_genes": null
+    },
+    "official_commit": "5254bcfeece32442eee31590fe46bcc4af849181"
+  },
+  "donor_analysis": {
+    "enabled": true,
+    "min_cells": 15,
+    "n_runs": 1
+  },
+  "programs": {},
+  "stability_criteria": {
+    "minimum_seed_spearman": 0.8,
+    "min_donors": 3,
+    "top_k": 30,
+    "require_no_fixed_program_pooled_donor_conflicts": true,
+    "history_informed": false,
+    "scope": "Define and freeze suitable scientific criteria BEFORE running a new project. Empty programs make sign stability NOT_EVALUATED."
+  },
+  "runtime": {
+    "python_monitor": "../local/env/Scripts/python.exe",
+    "python_data": "../local/env/Scripts/python.exe",
+    "Rscript": "../local/R/bin/Rscript.exe",
+    "R_library": "../local/R/library"
+  },
+  "resources": {
+    "threads": 2,
+    "minimum_free_ram_mib": 192,
+    "maximum_working_set_mib": 850,
+    "maximum_private_mib": 1000,
+    "maximum_seconds_per_stage": 300,
+    "maximum_download_mib": 20,
+    "no_external_LLM": true,
+    "no_large_training": true,
+    "maximum_estimated_engine_mib": 512
+  },
+  "figures": {
+    "backend": "R",
+    "font": "Microsoft YaHei",
+    "width_mm": 210,
+    "dpi": 300,
+    "minimum_font_pt": 7
+  }
+}

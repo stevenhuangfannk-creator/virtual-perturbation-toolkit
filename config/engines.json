@@ -1,0 +1,24 @@
+{
+  "dosedirko": {
+    "integration": "IMPLEMENTED",
+    "prediction_target": ["network_embedding_distance", "candidate_signed_propagation"],
+    "scale": "effect and delta; neither is experimental log2FC",
+    "available_if": "Source SHA and compatible local dependencies pass; actual run is separately recorded",
+    "biological_validation": "NOT_ESTABLISHED",
+    "code_license": "No LICENSE found in audited official commit; source is externally referenced, not redistributed"
+  },
+  "celloracle": {
+    "integration": "NOT_INTEGRATED",
+    "prediction_target": ["cell_state_vector"],
+    "scale": "Simulated expression shift and transition vector; not DoseDirKO units",
+    "available": false,
+    "reason": "Historical supported environment blocked; no callable adapter supplied"
+  },
+  "sctenifoldknk": {
+    "integration": "NOT_INTEGRATED",
+    "prediction_target": ["differential_regulation_distance"],
+    "scale": "Unsigned DR distance/rank; no expression direction",
+    "available": false,
+    "reason": "Prior technical runs exist, scientific decision STOP/PIVOT; no generic adapter supplied"
+  }
+}

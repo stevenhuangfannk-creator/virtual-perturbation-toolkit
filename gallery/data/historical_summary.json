@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "evidence": "Historical aggregate; NOT new analysis",
+  "n_cells": 120,
+  "n_independent_donors": 3,
+  "n_genes": 460,
+  "cell_definition": "Operational multigene enrichment; fine subtype provisional",
+  "raw_counts_audit": "PASS for exploratory subset only",
+  "targets": [
+    "JUND",
+    "STAT4"
+  ],
+  "perturbation": {
+    "type": "KD",
+    "alpha": 0.5,
+    "interpretation": "50% network-row scaling, NOT calibrated 50% biological RNA/protein KD"
+  },
+  "engine": {
+    "id": "dosedirko",
+    "official_commit": "5254bcfeece32442eee31590fe46bcc4af849181",
+    "params": {
+      "n_subsample": 4,
+      "subsample_frac": 0.8,
+      "pca_k": 10,
+      "ridge_alpha": 1.0,
+      "cp_rank": 3,
+      "embed_dim": 10,
+      "beta": 0.2,
+      "n_hops": 3,
+      "n_runs": 3,
+      "min_cells_frac": 0.02,
+      "random_state": 271828,
+      "n_top_genes": null
+    }
+  },
+  "programs": {
+    "Inflammatory": [
+      "CXCL6",
+      "CXCL8",
+      "CSF3",
+      "IL6",
+      "CCL2"
+    ],
+    "Matrix": [
+      "COL1A1",
+      "COL1A2",
+      "DCN",
+      "LUM",
+      "COL3A1"
+    ],
+    "Myofibroblast": [
+      "ACTA2",
+      "TAGLN",
+      "MYL9",
+      "TPM2"
+    ],
+    "Stress": [
+      "FOS",
+      "JUN",
+      "HSPA1A",
+      "HSPA1B",
+      "DDIT3"
+    ],
+    "Cell_cycle": [
+      "MKI67",
+      "TOP2A",
+      "UBE2C",
+      "PCNA"
+    ]
+  },
+  "stability_criteria": {
+    "minimum_seed_spearman": 0.8,
+    "min_donors": 3,
+    "top_k": 30,
+    "require_no_fixed_program_pooled_donor_conflicts": true,
+    "history_informed": true,
+    "scope": "Frozen toolkit reporting rubric informed by prior audit; NOT independent prospective biological validation; does not alter historical engine params"
+  },
+  "status": {
+    "INPUT_OK": {
+      "state": "PASS",
+      "reason": "Raw counts, identifiers and provenance audited for exploratory subset use"
+    },
+    "RUN_OK": {
+      "state": "PASS",
+      "reason": "Official numerical runs completed; reproducibility assessed separately"
+    },
+    "PREDICTION_STABLE": {
+      "state": "FAIL",
+      "reason": "Prespecified reporting rubric: both score ranks and fixed-program pooled/donor signs"
+    },
+    "BIO_VALIDATED": {
+      "state": "NOT_EVALUATED",
+      "reason": "No independent true genetic perturbation experiment was provided."
+    },
+    "scientific_decision": "PARTIAL",
+    "historical_replay": {
+      "state": "PASS",
+      "files_compared": 44,
+      "all_exact": true,
+      "scope": "Official CSV and algorithm/network NPY hashes; source replay, NOT independent validation"
+    },
+    "independent_true_KO": false,
+    "baseline_superiority": "NOT_EVALUATED_NO_TRUE_KO"
+  },
+  "data_attribution": {
+    "creator": "Lin, Weimin",
+    "source": "https://zenodo.org/records/19697597",
+    "license": "CC-BY-4.0",
+    "license_source": "Zenodo record API, accessed 2026-10-10",
+    "caveat": "API publication_date=2028-04-22 conflicts with audit date 2026-10-10; unresolved metadata anomaly"
+  },
+  "excluded": [
+    "raw counts",
+    "cell identifiers",
+    "donor identifiers",
+    "library identifiers",
+    "per-cell coordinates",
+    "per-donor scores",
+    "complete network and checkpoints",
+    "private absolute paths",
+    "third-party engine source"
+  ],
+  "selection_rules": {
+    "associations": "Top12 absolute mean pooled WT association weights per target",
+    "predictions": "All fixed historical program genes; top20 effect table separately supplied",
+    "donor_summary": "Aggregate signs/counts only; no donor IDs or individual numerical scores",
+    "seed_results": "All 3 pairwise comparisons per score per target; no seed selection"
+  }
+}
